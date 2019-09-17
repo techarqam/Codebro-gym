@@ -19,20 +19,22 @@ export class MainHeaderComponent implements OnInit {
       title: 'Memberships',
       url: '/view-membership',
     },
-    // {
-    //   title: 'Clients',
-    //   url: '/clients',
-    // },
-    // {
-    //   title: 'Users',
-    //   url: '/all-users',
-    // },
+    {
+      title: 'Discounts',
+      url: '/view-discount',
+    },
+    {
+      title: 'Members',
+      url: '/view-member',
+    },
+    {
+      title: 'Sessions',
+      url: '/view-sessions',
+    },
   ]
 
 
-  user: any = {
-    name: ""
-  };
+  user: any = {};
   constructor(
     private menuCtrl: MenuController,
     public authService: AuthService,
@@ -48,6 +50,10 @@ export class MainHeaderComponent implements OnInit {
       if (user) {
         this.authService.getUser(user.uid).subscribe(snap => {
           this.user = snap.payload.data();
+          this.authService.getCompanyName(this.user.company).subscribe(snap => {
+            let comp: any = snap.payload.data();
+            this.user.companyName = comp.companyName;
+          })
         })
       }
     })

@@ -6,12 +6,12 @@
                 <ion-card>
 
                     <ion-card-header>
-                        <ion-title class="card-header">Edit a Membership</ion-title>
+                        <ion-title class="card-header">Edit a Discount</ion-title>
                     </ion-card-header>
                     <ion-row>
                         <ion-col size="12" size-md="10" offset-md="1">
                             <ion-card-content>
-                                <form [formGroup]="this.modelService.membership">
+                                <form [formGroup]="this.modelService.discount">
 
                                     <ion-item>
                                         <ion-label position="floating">Name</ion-label>
@@ -19,19 +19,13 @@
                                     </ion-item>
 
                                     <ion-item>
-                                        <ion-label position="floating">Months</ion-label>
-                                        <ion-input type="text" formControlName="months"></ion-input>
+                                        <ion-label position="floating">Percentage</ion-label>
+                                        <ion-input type="text" formControlName="percentage"></ion-input>
                                     </ion-item>
-
-                                    <ion-item>
-                                        <ion-label position="floating">Pricing</ion-label>
-                                        <ion-input type="text" formControlName="pricing"></ion-input>
-                                    </ion-item>
-
 
                                     <ion-button expand="full" class="ion-margin-top" [disabled]="disableBtn"
-                                        (click)="updateMembership()">
-                                        Update Membership
+                                        (click)="updateDiscount()">
+                                        Update Discount
                                     </ion-button>
                                 </form>
                             </ion-card-content>

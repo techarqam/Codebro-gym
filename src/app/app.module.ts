@@ -27,21 +27,58 @@ import * as firebase from 'firebase';
 
 firebase.initializeApp(firebaseConfig);
 
-import {AddMembershipComponent } from './Components/Membership/add-membership/add-membership.component';
-import {EditMembershipComponent } from './Components/Membership/edit-membership/edit-membership.component';
-import {DetailsMembershipComponent } from './Components/Membership/details-membership/details-membership.component';
-import {ViewMembershipComponent } from './Components/Membership/view-membership/view-membership.component';
+import { AddMembershipComponent } from './Components/Membership/add-membership/add-membership.component';
+import { EditMembershipComponent } from './Components/Membership/edit-membership/edit-membership.component';
+import { DetailsMembershipComponent } from './Components/Membership/details-membership/details-membership.component';
+import { ViewMembershipComponent } from './Components/Membership/view-membership/view-membership.component';
+
+import { AddDiscountComponent } from './Components/Discount/add-discount/add-discount.component';
+import { EditDiscountComponent } from './Components/Discount/edit-discount/edit-discount.component';
+import { DetailsDiscountComponent } from './Components/Discount/details-discount/details-discount.component';
+import { ViewDiscountComponent } from './Components/Discount/view-discount/view-discount.component';
+import { AddMemberComponent } from './Components/Member/add-member/add-member.component';
+import { EditMemberComponent } from './Components/Member/edit-member/edit-member.component';
+import { DetailsMemberComponent } from './Components/Member/details-member/details-member.component';
+import { ViewMemberComponent } from './Components/Member/view-member/view-member.component';
+
+
+import {AddSessionsComponent } from './Components/Sessions/add-sessions/add-sessions.component';
+import {EditSessionsComponent } from './Components/Sessions/edit-sessions/edit-sessions.component';
+import {DetailsSessionsComponent } from './Components/Sessions/details-sessions/details-sessions.component';
+import {ViewSessionsComponent } from './Components/Sessions/view-sessions/view-sessions.component';
 
   @NgModule({
   
+
+
+
   declarations: [
     AppComponent,
+    /*Sessions*/
+    AddSessionsComponent,
+    EditSessionsComponent,
+    DetailsSessionsComponent,
+    ViewSessionsComponent,
+    
+
+    /*Discount*/
+    AddDiscountComponent,
+    EditDiscountComponent,
+    DetailsDiscountComponent,
+    ViewDiscountComponent,
+
+    /*Member*/
+    AddMemberComponent,
+    EditMemberComponent,
+    DetailsMemberComponent,
+    ViewMemberComponent,
+
     /*Membership*/
     AddMembershipComponent,
     EditMembershipComponent,
     DetailsMembershipComponent,
     ViewMembershipComponent,
-    
+
     DashboardComponent,
     LoginComponent,
     MainHeaderComponent,

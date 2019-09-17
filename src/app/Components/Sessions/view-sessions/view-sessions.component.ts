@@ -1,28 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { NavController } from '@ionic/angular';
-import { MembershipService } from '../../../Services/membership/membership.service';
+import { SessionsService } from '../../../Services/sessions/sessions.service';
 @Component({
-  selector: 'view-add-membership',
-  templateUrl: './view-membership.component.html',
-  styleUrls: ['./view-membership.component.scss'],
+  selector: 'view-add-sessions',
+  templateUrl: './view-sessions.component.html',
+  styleUrls: ['./view-sessions.component.scss'],
 })
-export class ViewMembershipComponent implements OnInit {
+export class ViewSessionsComponent implements OnInit {
   showLoader: boolean = false;
-  membership: Array<any> = [];
-  membershipLoaded: Array<any> = [];
+  sessions: Array<any> = [];
+  sessionsLoaded: Array<any> = [];
   isGrid: boolean = true;
   constructor(
-    public membershipService: MembershipService,
+    public sessionsService: SessionsService,
     public navCtrl: NavController,
   ) {
-    this.getmemberships();
+    this.getsessionss();
   }
 
   ngOnInit() { }
-  getmemberships() {
+  getsessionss() {
     this.showLoader = true;
-    this.membershipService.getMemberships().subscribe(snap => {
+    this.sessionsService.getSessionss().subscribe(snap => {
       let tempArray = [];
       snap.forEach(snip => {
         let temp: any = snip.payload.doc.data();
@@ -30,15 +30,15 @@ export class ViewMembershipComponent implements OnInit {
         temp.timestamp = moment(temp.timestamp).fromNow();
         tempArray.push(temp);
       })
-      this.membership = tempArray;
-      this.membershipLoaded = tempArray;
+      this.sessions = tempArray;
+      this.sessionsLoaded = tempArray;
       this.showLoader = false;
     });
   }
 
 
   initializeItems(): void {
-    this.membership = this.membershipLoaded;
+    this.sessions = this.sessionsLoaded;
   }
   getItems(searchbar) {
     this.initializeItems();
@@ -46,7 +46,7 @@ export class ViewMembershipComponent implements OnInit {
     if (!q.length) {
       return;
     }
-    this.membership = this.membership.filter((v) => {
+    this.sessions = this.sessions.filter((v) => {
       if ((v.name) && q) {
         if (v.name.toLowerCase().indexOf(q.toLowerCase()) > -1) {
           return true;
@@ -57,7 +57,7 @@ export class ViewMembershipComponent implements OnInit {
   }
 
   gtDetails(p) {
-    let x = '/membership-details/' + p.id;
+    let x = '/sessions-details/' + p.id;
     this.navCtrl.navigateRoot(x);
   }
 

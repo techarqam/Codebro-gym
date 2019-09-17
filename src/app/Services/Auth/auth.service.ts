@@ -94,5 +94,8 @@ export class AuthService {
     return retVal;
   }
 
+  getCompanyName(compId) {
+    return this.db.collection("Companies").doc(compId).snapshotChanges();
+  }
 
 }
