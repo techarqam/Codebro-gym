@@ -36,8 +36,8 @@ export class AuthService {
     })
   }
 
-  getUser() {
-    return this.db.collection("Users").doc(this.id).snapshotChanges();
+  getUser(id) {
+    return this.db.collection("Users").doc(id).snapshotChanges();
   }
 
 

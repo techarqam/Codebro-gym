@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/Services/Auth/auth.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-main-header',
@@ -14,10 +15,10 @@ export class MainHeaderComponent implements OnInit {
       title: 'Dashboard',
       url: '/dashboard',
     },
-    // {
-    //   title: 'Projects',
-    //   url: '/projects',
-    // },
+    {
+      title: 'Memberships',
+      url: '/view-membership',
+    },
     // {
     //   title: 'Clients',
     //   url: '/clients',
@@ -43,8 +44,12 @@ export class MainHeaderComponent implements OnInit {
   ngOnInit() { }
 
   getUser() {
-    this.authService.getUser().subscribe(snap => {
-      this.user = snap.payload.data();
+    firebase.auth().onAuthStateChanged((user: firebase.User) => {
+      if (user) {
+        this.authService.getUser(user.uid).subscribe(snap => {
+          this.user = snap.payload.data();
+        })
+      }
     })
   }
 
@@ -59,9 +64,6 @@ export class MainHeaderComponent implements OnInit {
   openProfile() {
     this.menuCtrl.enable(true, 'profile');
     this.menuCtrl.open('profile');
-  }
-  gtChat() {
-    this.navCtrl.navigateRoot("/chat");
   }
 }
 

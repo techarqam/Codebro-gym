@@ -27,9 +27,21 @@ import * as firebase from 'firebase';
 
 firebase.initializeApp(firebaseConfig);
 
-@NgModule({
+import {AddMembershipComponent } from './Components/Membership/add-membership/add-membership.component';
+import {EditMembershipComponent } from './Components/Membership/edit-membership/edit-membership.component';
+import {DetailsMembershipComponent } from './Components/Membership/details-membership/details-membership.component';
+import {ViewMembershipComponent } from './Components/Membership/view-membership/view-membership.component';
+
+  @NgModule({
+  
   declarations: [
     AppComponent,
+    /*Membership*/
+    AddMembershipComponent,
+    EditMembershipComponent,
+    DetailsMembershipComponent,
+    ViewMembershipComponent,
+    
     DashboardComponent,
     LoginComponent,
     MainHeaderComponent,
