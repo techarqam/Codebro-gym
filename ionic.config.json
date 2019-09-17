@@ -1,5 +1,7 @@
 {
   "name": "gym",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
